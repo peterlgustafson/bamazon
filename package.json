@@ -1,0 +1,30 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "Amazon-like storefront that takes in orders from customers and depletes stock from the store's inventory.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peterlgustafson/bamazon.git"
+  },
+  "keywords": [
+    "mysql",
+    "inquirer"
+  ],
+  "author": "me",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/peterlgustafson/bamazon/issues"
+  },
+  "homepage": "https://github.com/peterlgustafson/bamazon#readme",
+  "dependencies": {
+    "and": "0.0.3",
+    "inquirer": "^5.1.0",
+    "install": "^0.10.4",
+    "mysql": "^2.15.0",
+    "npm": "^5.7.1"
+  }
+}
