@@ -44,17 +44,19 @@ var startPurchase = function (res) {
         message: "Please enter the Item ID of the product you'd like to purchase. [Exit with E]"
     }]).then(function (answer) {
         var validChoice = false;
+        //If user inputs "E" exit the program
         if (answer.choice == "E") {
             process.exit();
         }
         for (var i = 0; i < res.length; i++) {
+            //Checking if user input is a valid selection
             if (res[i].item_id == answer.choice) {
                 validChoice = true;
                 var productID = answer.choice;
                 var id = i;
                 inquirer.prompt({
                     type: "input",
-                    name: "quant",
+                    name: "quantity",
                     message: "How many would you like to purchase?",
                     //Validate method to validate that user input is a number
                     validate: function (value) {
@@ -66,9 +68,9 @@ var startPurchase = function (res) {
                     }
                 //Function to check if there's sufficient quantity to complete purchase and print order statement
                 }).then(function (answer) {
-                    if ((res[id].stock_quantity - answer.quant) > 0) {
-                        connection.query("UPDATE products SET stock_quantity='" + (res[id].stock_quantity - answer.quant) + "'WHERE item_id='" + productID + "'", function (err, res2) {
-                            console.log("Your order has been completed. Your total cost is $" + (answer.quant * res[id].price) + ".");
+                    if ((res[id].stock_quantity - answer.quantity) > 0) {
+                        connection.query("UPDATE products SET stock_quantity='" + (res[id].stock_quantity - answer.quantity) + "'WHERE item_id='" + productID + "'", function (err, res2) {
+                            console.log("Your order has been completed. Your total cost is $" + (answer.quantity * res[id].price) + ".");
                             createTable();
                         })
                     } else {
